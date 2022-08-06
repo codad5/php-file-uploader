@@ -1,0 +1,16 @@
+{
+    "name": "codad5/file-helper",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Codad5\\FileHelper\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Chibueze A",
+            "email": "aniezeoformic@gmail.com"
+        }
+    ],
+    "require": {}
+}
