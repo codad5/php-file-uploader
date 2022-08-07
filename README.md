@@ -86,7 +86,7 @@ foreach ($upload_path as $key => $value) {
 - `name` - The name of the file 
 - `size` - The size of the file
 - `type` - The file Type
-- `ext` - The file ext 
+- `ext` - The file extension
 
 ### Method Chaining 
 ```php
@@ -95,8 +95,8 @@ $file_upload_controller = new \Codad5\FileHelper\FileUploader('tes', "uploads/")
 
     $uploaded_file_array = $file_upload_controller
     ->set_reporting(false, false, false)
-    ->add_ext('sql', 'pdf')
-    ->set_prefix('notcool')
+    ->add_ext('png', 'pdf')
+    ->set_prefix('cool Stuff')
     ->move_files()
     ->get_uploads();
 
@@ -104,7 +104,7 @@ $file_upload_controller = new \Codad5\FileHelper\FileUploader('tes', "uploads/")
         # code...
         echo "This file has been uploaded to ".$value['uploaded_path']."<br/>";
     }
-    
+
 ```
 
 
