@@ -3,7 +3,7 @@ FIle Uploader is a php package to aid fast , easy and safe file upload
 
 ## installation
 ```bash
-coming soon
+composer require codad5/file-helper
 ```
 ## Features
 - Fast and easy to use with method chaining
