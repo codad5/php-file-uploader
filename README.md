@@ -66,15 +66,20 @@ $file_upload_controller->set_reporting(true, false, true);
 
 ### Moving the file
 ```php
+
 $file_upload_controller->move_files();
+
 ```
 ### Get Uploaded file path
 ```php
+
 $upload_path = $file_upload_controller->get_uploads();
+
 foreach ($upload_path as $key => $value) {
         # code...
         echo "This file has been uploaded to ".$value['uploaded_path']."<br/>;
     }
+
 ```
 - This returns a multi-dimensional array of each array with the following key
 - `uploaded_path` - The final uploaded file with path relative to the script tag `upload.php`
@@ -85,7 +90,9 @@ foreach ($upload_path as $key => $value) {
 
 ### Method Chaining 
 ```php
+
 $file_upload_controller = new \Codad5\FileHelper\FileUploader('tes', "uploads/");
+
     $uploaded_file_array = $file_upload_controller
     ->set_reporting(false, false, false)
     ->add_ext('sql', 'pdf')
@@ -97,6 +104,7 @@ $file_upload_controller = new \Codad5\FileHelper\FileUploader('tes', "uploads/")
         # code...
         echo "This file has been uploaded to ".$value['uploaded_path']."<br/>";
     }
+    
 ```
 
 
