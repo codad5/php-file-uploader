@@ -10,6 +10,11 @@
     ->move_files()
     ->get_uploads();
 
+    foreach ($uploaded_file_array as $key => $value) {
+        # code...
+        echo "This file has been uploaded to ".$value['uploaded_path']."<br/>";
+    }
+
     echo '<pre>';   
         print_r($file_upload_controller->files()) ;
         print_r($file_upload_controller2->files());

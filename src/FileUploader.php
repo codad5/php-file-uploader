@@ -212,6 +212,7 @@ class FileUploader{
             $this->uploaded_files[$i]['name'] = $this->files[$i]['name'];
             $this->uploaded_files[$i]['size'] = $this->files[$i]['size'];
             $this->uploaded_files[$i]['type'] = $this->files[$i]['type'];
+            $this->uploaded_files[$i]['ext'] = $this->get_ext($this->files[$i]['name']);
             move_uploaded_file($this->files[$i]['tmp_name'], "$this->upload_path" . $this->files[$i]['name']);
         }
         return $this;

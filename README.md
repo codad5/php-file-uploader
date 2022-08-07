@@ -64,6 +64,27 @@ $file_upload_controller->set_reporting(true, false, true);
 - The Third param `$type_error` is to report error if a file is not part of the allowed file
 > NOTE: If any is `false` and error is found it will ignore the file and continue upload with out the file
 
+### Moving the file
+```php
+$file_upload_controller->move_files();
+```
+### Get Uploaded file path
+```php
+$upload_path = $file_upload_controller->get_uploads();
+foreach ($upload_path as $key => $value) {
+        # code...
+        echo "This file has been uploaded to ".$value['uploaded_path']."<br/>;
+    }
+```
+- This returns a multi-dimensional array of each array with the following key
+- `uploaded_path` - The final uploaded file with path relative to the script tag `upload.php`
+- `name` - The name of the file 
+- `size` - The size of the file
+- `type` - The file Type
+- `ext` - The file ext 
+
+
+
 > This documentaion will be updated in time as the project grows
 > for enquire and more information [contact me here](https://twitter.com/codad5_)
 
