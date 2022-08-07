@@ -6,7 +6,7 @@ FIle Uploader is a php package to aid fast , easy and safe file upload
 coming soon
 ```
 ## Features
-- Fast and easy to use 
+- Fast and easy to use with method chaining
 - Good error management
 - Safety management
 - works for both multiple file upload and single file upload
@@ -83,6 +83,21 @@ foreach ($upload_path as $key => $value) {
 - `type` - The file Type
 - `ext` - The file ext 
 
+### Method Chaining 
+```php
+$file_upload_controller = new \Codad5\FileHelper\FileUploader('tes', "uploads/");
+    $uploaded_file_array = $file_upload_controller
+    ->set_reporting(false, false, false)
+    ->add_ext('sql', 'pdf')
+    ->set_prefix('notcool')
+    ->move_files()
+    ->get_uploads();
+
+    foreach ($uploaded_file_array as $key => $value) {
+        # code...
+        echo "This file has been uploaded to ".$value['uploaded_path']."<br/>";
+    }
+```
 
 
 > This documentaion will be updated in time as the project grows
