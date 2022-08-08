@@ -155,11 +155,12 @@ class FileUploader{
         if(!is_array($this->files['name'])){
             if($this->files['name'] != []) {
                 //making sure the extension is allowed
+                if(empty($this->files['name']) && $this->files['size'] < 1) throw new \Exception("Invalid File Type : Suspect No file Uploaded");
                 if (!in_array($this->get_ext($this->files['name']), $this->allowed_ext) && count($this->allowed_ext) > 0 && $this->report_type_error) {
                     throw new \OutOfBoundsException("$this->get_ext($this->files['name']) is an invalid file type");
                 }
                 if ($this->files['error'] && $this->report_file_error) {
-                    throw new \ErrorException("file with name $this->files['name'] has an error");
+                    throw new \ErrorException("file with name ".$this->files['name']." has an error");
                 }
                 # For max size validation
                 if ($this->files['size'] > $this->max_size && !is_null($this->max_size)) throw new \LengthException("max file size of $this->max_size exceeded on file with name '$this->prefix.$this->files['name']'");
@@ -185,16 +186,16 @@ class FileUploader{
         for ($i=0; $i < count($this->files['name']); $i++) { 
             //making sure the extension is allowed
             if(!in_array($this->get_ext($this->files['name'][$i]), $this->allowed_ext) && count( $this->allowed_ext) > 0 && $this->report_type_error){
-                if($this->report_type_error) throw new \OutOfBoundsException("$this->get_ext($this->files['name']) is an invalid file type");
+                if($this->report_type_error) throw new \OutOfBoundsException($this->get_ext($this->files['name'][$i])." is an invalid file type");
                 continue;
             }
             if($this->files['error'][$i] && $this->report_file_error){
                 throw new \ErrorException("file with name $this->files['name'][$i] has an error");
             }
             # For max size validation
-            if($this->files['size'][$i] > $this->max_size && !is_null($this->max_size)) throw new \LengthException("max file size of $this->max_size exceeded on file with name '$this->prefix.$this->files['name'][$i]'");
+            if($this->files['size'][$i] > $this->max_size && !is_null($this->max_size)) throw new \LengthException("max file size of $this->max_size exceeded on file with name '".$this->prefix . $this->files['name'][$i]."'");
             # For min size validation
-            if($this->files['size'][$i] < $this->min_size && !is_null($this->min_size)) throw new \LengthException("min file size of $this->max_size exceeded on file with name '$this->prefix.$this->files['name'][$i]'");
+            if($this->files['size'][$i] < $this->min_size && $this->min_size) throw new \LengthException("min file size of $this->max_size not reached on file with name '". $this->prefix . $this->files['name'][$i] . "'");
             $img[$i] = ['name' => $this->prefix.$this->files['name'][$i] ?? '', 'type' => $this->files['type'][$i] ?? '', 'tmp_name' =>  $this->files['tmp_name'][$i] ?? '', 'error' => $this->files['error'][$i] ?? 0, 'size' => $this->files['size'][$i]  ?? 0];
         }
         $this->files = array_values($img);

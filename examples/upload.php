@@ -5,6 +5,7 @@
     $file_upload_controller2 = new \Codad5\FileHelper\FileUploader('tes', "uploads/");
     $uploaded_file_array = $file_upload_controller
     ->set_reporting(false, false, false)
+    ->set_sizes(null,0)
     ->add_ext('sql', 'pdf')
     ->set_prefix('notcool')
     ->move_files()
