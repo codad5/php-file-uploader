@@ -138,9 +138,14 @@ class FileUploader{
     protected function path_exist()
     {
         $exist = file_exists($this->upload_path);
-        if (!$this->upload_path && $this->report_path_error)
+        if($exist){
+            return $exist;
+        }
+        if (!$this->upload_path && $this->report_path_error){
+
             throw new \Exception("$this->upload_path already exist", 1);
-        mkdir($this->upload_path);
+        }
+        return mkdir($this->upload_path);
 
     }
 
