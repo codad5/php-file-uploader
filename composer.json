@@ -1,6 +1,6 @@
 {
     "name": "codad5/file-helper",
-    "description": "A short description of what your package does",
+    "description": "FIle Uploader is a php package to aid fast , easy and safe file upload",
     "license": "MIT",
     "autoload": {
         "psr-4": {
